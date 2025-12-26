@@ -1,0 +1,146 @@
+$main-color: #f2e205;
+$secondary-color: #d9042b;
+$tertiary-color: #ee05f2;
+$white: #ffffff;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin carambar-border {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        $tertiary-color,
+        $tertiary-color 10px,
+        $white 10px,
+        $white 20px
+    );
+    z-index: 10;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $main-color;
+    color: $secondary-color;
+    @include flex-center();
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    padding: 0 30px;
+
+    &::before {
+        @include carambar-border();
+        left: 0;
+    }
+
+    &::after {
+        @include carambar-border();
+        right: 0;
+        background: repeating-linear-gradient(
+            -45deg,
+            $tertiary-color,
+            $tertiary-color 10px,
+            $white 10px,
+            $white 20px
+        );
+    }
+}
+
+header {
+    margin-bottom: 20px;
+    position: absolute;
+    top: 10px;
+
+    & img {
+        height: 170px;
+        transform: rotate(15deg);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+    }
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 $white;
+    text-align: center
+}
+
+.joke {
+    @include flex-center();
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 500px;
+
+    &__card {
+        background: $white;
+        padding: 30px;
+        border: 2px solid $secondary-color;
+        border-radius: 15px;
+        box-shadow: 8px 8px 0px $tertiary-color;
+        width: 100%;
+        min-height: 180px;
+        text-align: center;
+        margin-bottom: 30px;
+
+        &--question {
+            font-size: 25px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        &--answer {
+            margin-top: 20px;
+            font-size: 20px;
+            font-style: italic;
+            color: $tertiary-color;
+            transition: opacity 0.5s ease-in-out;
+
+            &.hidden {
+                opacity: 0;
+            }
+        }
+    }
+
+    &__btn {
+        background-color: $tertiary-color;
+        color: $white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 0 darken($tertiary-color, 10%);
+        transition: all 0.2s active;
+
+        &:hover {
+            background-color: lighten($tertiary-color, 5%);
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0;
+        }
+
+        &:disabled {
+            background-color: #ccc;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+    }
+}

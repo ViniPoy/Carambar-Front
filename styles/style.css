@@ -1,0 +1,117 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f2e205;
+  color: #d9042b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  padding: 0 30px;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, #ee05f2, #ee05f2 10px, #ffffff 10px, #ffffff 20px);
+  z-index: 10;
+  left: 0;
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, #ee05f2, #ee05f2 10px, #ffffff 10px, #ffffff 20px);
+  z-index: 10;
+  right: 0;
+  background: repeating-linear-gradient(-45deg, #ee05f2, #ee05f2 10px, #ffffff 10px, #ffffff 20px);
+}
+
+header {
+  margin-bottom: 20px;
+  position: absolute;
+  top: 10px;
+}
+header img {
+  height: 170px;
+  transform: rotate(15deg);
+  transition: transform 0.3s ease;
+}
+header img:hover {
+  transform: rotate(0deg) scale(1.1);
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 40px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 0 #ffffff;
+  text-align: center;
+}
+
+.joke {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 500px;
+}
+.joke__card {
+  background: #ffffff;
+  padding: 30px;
+  border: 2px solid #d9042b;
+  border-radius: 15px;
+  box-shadow: 8px 8px 0px #ee05f2;
+  width: 100%;
+  min-height: 180px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.joke__card--question {
+  font-size: 25px;
+  margin: 0;
+  font-weight: 600;
+}
+.joke__card--answer {
+  margin-top: 20px;
+  font-size: 20px;
+  font-style: italic;
+  color: #ee05f2;
+  transition: opacity 0.5s ease-in-out;
+}
+.joke__card--answer.hidden {
+  opacity: 0;
+}
+.joke__btn {
+  background-color: #ee05f2;
+  color: #ffffff;
+  border: none;
+  padding: 15px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgb(188.8582995951, 3.967611336, 192.032388664);
+  transition: all 0.2s active;
+}
+.joke__btn:hover {
+  background-color: rgb(246.3461538462, 22.3076923077, 250.1923076923);
+  transform: translateY(-2px);
+}
+.joke__btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0;
+}
+.joke__btn:disabled {
+  background-color: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}/*# sourceMappingURL=style.css.map */
