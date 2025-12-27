@@ -8,6 +8,7 @@ const fetchJoke = async () => {
         btn.disabled = true;
         btn.textContent = "Atteds un peu...";
         answerElement.classList.add('hidden');
+        answerElement.textContent = "";
         questionElement.textContent = "On cherche une blague...";
 
         const response = await fetch(API_URL);
@@ -20,9 +21,9 @@ const fetchJoke = async () => {
         console.log("Données reçues : ", data)
 
         questionElement.textContent = data.question;
-        answerElement.textContent = data.answer;
 
         setTimeout(() => {
+            answerElement.textContent = data.answer;
             answerElement.classList.remove('hidden');
             btn.disabled = false;
             btn.textContent = 'Voir une blague';
