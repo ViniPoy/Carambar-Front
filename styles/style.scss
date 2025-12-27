@@ -9,6 +9,14 @@ $white: #ffffff;
     align-items: center;
 }
 
+@mixin carambar-title {
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0 $white;
+    text-align: center
+}
+
 @mixin carambar-border {
     content: "";
     position: fixed;
@@ -18,11 +26,18 @@ $white: #ffffff;
     background: repeating-linear-gradient(
         45deg,
         $tertiary-color,
-        $tertiary-color 10px,
-        $white 10px,
-        $white 20px
+        $tertiary-color 20px,
+        $white 20px,
+        $white 40px
     );
     z-index: 10;
+}
+
+@mixin text-zone {
+    background: $white;
+    border: 2px solid $secondary-color;
+    border-radius: 15px;
+    box-shadow: 8px 8px 0px $tertiary-color;
 }
 
 body {
@@ -47,17 +62,15 @@ body {
         background: repeating-linear-gradient(
             -45deg,
             $tertiary-color,
-            $tertiary-color 10px,
-            $white 10px,
-            $white 20px
+            $tertiary-color 20px,
+            $white 20px,
+            $white 40px
         );
     }
 }
 
 header {
-    margin-bottom: 20px;
-    position: absolute;
-    top: 10px;
+    margin: 10px;
 
     & img {
         height: 170px;
@@ -71,11 +84,7 @@ header {
 }
 
 h1 {
-    font-weight: 900;
-    font-size: 40px;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 0 $white;
-    text-align: center
+    @include carambar-title();
 }
 
 .joke {
@@ -86,14 +95,12 @@ h1 {
     max-width: 500px;
 
     &__card {
-        background: $white;
+        @include text-zone();
         padding: 30px;
-        border: 2px solid $secondary-color;
-        border-radius: 15px;
-        box-shadow: 8px 8px 0px $tertiary-color;
-        width: 100%;
-        min-height: 180px;
         text-align: center;
+        width: 100%;
+        min-width: 450px;
+        min-height: 180px;
         margin-bottom: 30px;
 
         &--question {
@@ -125,10 +132,14 @@ h1 {
         border-radius: 50px;
         cursor: pointer;
         box-shadow: 0 4px 0 darken($tertiary-color, 10%);
-        transition: all 0.2s active;
+        transition: all 0.3s ease;
+
+        &--submit {
+            margin-top: 20px;
+        }
 
         &:hover {
-            background-color: lighten($tertiary-color, 5%);
+            background-color: lighten($tertiary-color, 10%);
             transform: translateY(-2px);
         }
 
@@ -141,6 +152,53 @@ h1 {
             background-color: #ccc;
             box-shadow: none;
             cursor: not-allowed;
+        }
+    }
+
+    &__title {
+        @include carambar-title();
+    }
+
+    &__form {
+        @include flex-center();
+        flex-direction: column;
+        gap: 15px;
+
+        &--group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            label {
+                font-weight: bold;
+            }
+
+            input {
+                @include text-zone();
+                padding: 10px;
+                min-width: 450px;
+            }
+        }
+    }
+
+    &__message {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+        opacity: 1;
+        min-height: 1.2em;
+        transition: opacity 0.3s ease;
+
+        &.hidden {
+            opacity: 0;
+        }
+
+        &.success {
+            color: green;
+        }
+
+        &.error {
+            color: red;
         }
     }
 }

@@ -20,6 +20,21 @@
                 </div>
                 <button class="joke__btn">Voir une blague</button>
             </div>
+            <div class="joke">
+                <h2 class="joke__title">Partage ta blague !</h2>
+                <form class="joke__form">
+                    <div class="joke__form--group">
+                        <label for="question">Ta question</label>
+                        <input type="text" id="question" name="question" placeholder="Ex: Pourquoi les oiseaux..." required>
+                    </div>
+                    <div class="joke__form--group">
+                        <label for="answer">Ta réponse</label>
+                        <input type="text" id="answer" name="answer" placeholder="Ex: Parce que..." required>
+                    </div>
+                    <button class="joke__btn joke__btn--submit">Envoyer au Carambar Lab'</button>
+                </form>
+                <p class="joke__message hidden"></p>
+            </div>
         </main>
         <footer>
 
